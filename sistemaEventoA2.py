@@ -1,6 +1,21 @@
 listaUsuarios = []
 cadastros = []
 
+def removerUsuario():
+    remover = input("Digite o email do usuário que deseja remover: ")
+    for cadastro in listaUsuarios:
+        if(remover == cadastro["email"]):
+            listaUsuarios.remove(cadastro)
+            print("Usuário excluído!")
+        else:
+            print("O email não está na lista!")
+            main()
+    for cadastro in cadastros:
+        separar = cadastro.split(" ")
+        if(remover == separar[3]):
+            cadastros.remove(cadastro)
+    main()
+
 def verificarNome():
     nome = input("Digite o nome que deseja procurar: ")
     for usuario in listaUsuarios:
