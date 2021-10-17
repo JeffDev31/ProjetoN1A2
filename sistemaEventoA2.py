@@ -1,31 +1,58 @@
-def exibirMenu():
-    print("==== Digite 1 para cadastrar novo usuário: ====\n")
-    print("==== Digite 2 para exibir todos os usuários por ordem de cadastro: ====\n")
-    print("==== Digite 3 para exibir todos os usuários por ordem alfabética: ====\n")
-    print("==== Digite 4 para verficar o dado de um usuário pelo seu nome: ====\n")
-    print("==== Digite 5 para verficar o dado de um usuário pelo seu e-mail: ====\n")
-    print("==== Digite 6 para remover um usuário cadastrado: ====\n")
-    print("==== Digite 7 para alterar o nome de um usuário buscando-o por seu e-mail: ====\n")
-    pass
+listaUsuarios = []
+cadastros = []
 
-def escolhaMenu():
-    escolha = input()
-    if (escolha == 1):
-        nomeNovoUsuario = input("dgite o nome completo do novo Usuário:\n")
-     #   dicionarioUsuarios.append(nomeNovoUsuario)
-        emailNovoUsuario = input("Digite o e-mail do novo Usuário:\n")
-    elif (escolha == 2):
-        print("batata")
+def listarCadastro(listaUsuarios):
+    print("Lista por ordem de cadastro: ")
+    num = 1
+    for cadastro in listaUsuarios:
+        print("{0} - Nome: {1}, Email: {2}".format(num, cadastro["nome"], cadastro["email"]))
+        num = num + 1
+    print(cadastros)
+    print(listaUsuarios)
+    main()
 
+def cadastrarUsuario():
+    usuarios = {}
+    usuarios["nome"] = input("Digite o nome completo do usuário: ")
+    usuarios["email"] = input("Digite o email do usuário: ")
+    cadastros.append("Nome: {0} Email: {1}".format(usuarios["nome"], usuarios["email"]))
+    return usuarios
+        
 
+def mostrarMenu():
+    print("----------------------------------Menu----------------------------------")
+    print("1 - Cadastrar novo usuário")
+    print("2 - Listar usuários por ordem de cadastro")
+    print("3 - Listar usuários por ordem alfabética")
+    print("4 - Verificar se um usuário faz parte da lista através do nome")
+    print("5 - Remover usuário")
+    print("6 - Alterar nome de usuário")
+    print("7 - Fechar programa")
+        
 def main():
-    listaDicionarioUsuarios = []
-    dicionarioUsuarios = {}     
-    exibirMenu()
-    escolhaMenu()   
-    pass
+    mostrarMenu()
 
+    option = int(input("Escolha uma opção: "))
+    while(option < 1 or option > 7):
+        print("Você escolheu uma opção inválida! Tente novamente.")
+        option = int(input("Escolha uma opção: "))
 
+    if(option == 1):
+        usuarios = cadastrarUsuario()
+        listaUsuarios.append(usuarios)
+        main()
+    elif(option == 2):
+       listarCadastro(listaUsuarios)
+    elif(option == 3):
+        listarAlfabetica()
+    elif(option == 4):
+        verificarNome()
+    elif(option == 5):
+        removerUsuario()
+    elif(option == 6):
+        alterarNome()
+    else:
+        breakpoint
 
 if __name__ == "__main__":
     main()
