@@ -1,6 +1,13 @@
 listaUsuarios = []
 cadastros = []
 
+def listarAlfabetica():
+    print("Lista por ordem alfabética: ")
+    listaAlfabetica = sorted(cadastros)
+    for nome in listaAlfabetica:
+        print("{0}".format(nome))
+    main()
+    
 def listarCadastro(listaUsuarios):
     print("Lista por ordem de cadastro: ")
     num = 1
