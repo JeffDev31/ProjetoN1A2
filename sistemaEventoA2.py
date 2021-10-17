@@ -1,6 +1,15 @@
 listaUsuarios = []
 cadastros = []
 
+def verificarNome():
+    nome = input("Digite o nome que deseja procurar: ")
+    for usuario in listaUsuarios:
+        if(nome == usuario["nome"]):
+            print("{0} possui cadastro!" .format(nome))
+        else:
+            print("{0} não possui cadastrado!" .format(nome))
+    main()
+    
 def listarAlfabetica():
     print("Lista por ordem alfabética: ")
     listaAlfabetica = sorted(cadastros)
