@@ -1,6 +1,24 @@
 listaUsuarios = []
 cadastros = []
 
+
+def alterarNome():
+    procurar = input("Insira o email do usuário que deseja alterar o nome: ")
+    alterar = input("Insira o novo nome para alteração: ")
+    for cadastro in listaUsuarios:
+        if(procurar == cadastro["email"]):
+            cadastro["nome"] = alterar
+            print("Usuário alterado de {} para {}" .format(cadastro["email"], alterar))
+    for cadastro in cadastros:
+        separar = cadastro.split(" ")
+        if(procurar == separar[3]):
+            cadastros.remove(cadastro)
+            usuarioAtualizado = separar
+            usuarioAtualizado[1] = alterar
+            usuarioAtualizado = usuarioAtualizado[0] + " " + usuarioAtualizado[1] + " " + usuarioAtualizado[2] + " " + usuarioAtualizado[3]
+            cadastros.append(usuarioAtualizado)
+    main()
+
 def removerUsuario():
     remover = input("Digite o email do usuário que deseja remover: ")
     for cadastro in listaUsuarios:
